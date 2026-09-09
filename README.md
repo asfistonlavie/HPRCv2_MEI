@@ -1,4 +1,4 @@
-# HPRC_MEI - Mobile element detection and analysis in human pangenomic data (HPRC)
+# HPRCv2_MEI - Mobile element detection and analysis in human pangenomic data (HPRC)
 
 # MEI Cumulative Discovery Analysis
 
