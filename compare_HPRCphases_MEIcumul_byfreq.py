@@ -3,10 +3,10 @@
 """
 MEI discovery cumulative analysis comparing phased and unphased haplotype data
 
-This script generates publication-quality figures (Nature-style) showing cumulative 
+This script generates publication-quality figures showing cumulative 
 Mobile Element Insertion (MEI) discovery across two phases:
-- Phase 1: Prioritized haplotypes (HAP1 & HAP2 from selected genomes)
-- Phase 2: All available haplotypes in the dataset
+- Phase 1: HAP1 haplotypes 
+- Phase 2: HAP2 haplotypes 
 
 The analysis categorizes MEIs by population frequency:
 - Rare: <1% population frequency
@@ -32,8 +32,8 @@ Output:
     - Console output: Statistical summary
 
 Author: Anna-Sophie Fiston-Lavier
-Date: 2025
-Version: 2.1.0
+Date: 2026
+Version: 1
 """
 
 import sys
@@ -174,7 +174,7 @@ DEPENDENCIES:
 
 AUTHOR:
     Anna-Sophie Fiston-Lavier
-    Website: www.annasophie.fr
+    Website: https://annasfistonlavier.com/
 
 VERSION: 2.1.0
 ================================================================================
