@@ -43,44 +43,45 @@ The analysis categorizes MEIs by population frequency into three classes:
 ```bash
 git clone https://github.com/annasophie/mei-cumulative-analysis.git
 cd mei-cumulative-analysis
+```
 
 2. Install dependencies
 
 Using pip:
-bash
+```bash
 pip install numpy pandas matplotlib
-
+```
 Or using conda:
-bash
+```bash
 
 conda install numpy pandas matplotlib
-
+```
 3. Verify installation
-bash
+```bash
 
 python mei_cumulative_analysis.py --help
-
+```
 Usage
 Basic usage
-bash
+```bash
 
 python mei_cumulative_analysis.py -g genomes.txt -m mei_data.txt
-
+```
 With long option names
-bash
+```bash
 
 python mei_cumulative_analysis.py --genomes genomes.txt --mei-data mei_data.txt
-
+```
 Display help
-bash
+```bash
 
 python mei_cumulative_analysis.py --help
-
+```
 Input files
 1. Genomes list file (-g, --genomes)
 
 Text file containing one genome identifier per line:
-text
+```text
 
 HG01123
 HG01258
@@ -97,9 +98,10 @@ Important notes:
     Spaces and special characters are automatically removed
 
     Duplicate entries are automatically deduplicated
-
+```
 2. MEI data file (-m, --mei-data)
 
+```text
 Tab-separated file containing MEI genotyping and frequency data with the following columns:
 Column	Description	Type	Example
 chr	Chromosome	string	chr1
@@ -117,9 +119,9 @@ total	Total alleles	integer	20
 samples	Haplotype samples	string	HG01123_HAP1,HG01258_HAP2
 
 Critical requirement: The samples column must contain haplotype information in the format {SAMPLE_ID}_HAP1 or {SAMPLE_ID}_HAP2 (e.g., HG01123_HAP1).
-
+```
 Example line:
-text
+```text
 
 chr1	1000	1200	LINE1	L1HS	LINE	+	200	PASS	0.15	3	20	HG01123_HAP1,HG01258_HAP2,HG01372_HAP1
 
@@ -235,9 +237,10 @@ Labels on the right:
     Separate annotations for Phase 1 and Phase 2 when applicable
 
 Statistics output
+```
 
 The console provides:
-text
+```text
 
 ======================================================================
 STATISTICAL SUMMARY
@@ -280,9 +283,9 @@ The interactive HTML report includes:
 
 Customization
 Adjusting frequency thresholds
-
+```
 Edit these constants in the script:
-python
+```python
 
 # In mei_cumulative_analysis.py
 RARE_THRESHOLD = 0.01    # <1% (default)
@@ -291,9 +294,9 @@ FIXED_THRESHOLD = 0.95   # >95% (default)
 # Example for stricter rare definition
 RARE_THRESHOLD = 0.005   # <0.5%
 FIXED_THRESHOLD = 0.99   # >99%
-
+```
 Changing figure dimensions
-python
+```python
 
 # Nature single column: 89mm (3.5 inches)
 FIGURE_WIDTH_INCHES = 3.5
@@ -306,9 +309,9 @@ FIGURE_HEIGHT_INCHES = 4.8
 # Full page width
 FIGURE_WIDTH_INCHES = 10.0
 FIGURE_HEIGHT_INCHES = 6.7
-
+```
 Modifying color scheme
-python
+```python
 
 COLORS = {
     # Phase 2 (saturated)
@@ -331,9 +334,9 @@ COLORS = {
     'phase1_polymorphic': '#56B4E9', # Sky blue (hatched)
     'phase1_rare': '#CC79A7',        # Pink (hatched)
 }
-
+```
 Changing hatching pattern
-python
+```python
 
 # Available hatch patterns
 HATCH_PATTERN = '///'   # Diagonal lines (default)
@@ -342,9 +345,9 @@ HATCH_PATTERN = '///'   # Diagonal lines (default)
 # HATCH_PATTERN = '|||'  # Vertical lines
 # HATCH_PATTERN = '+++'  # Grid pattern
 # HATCH_PATTERN = 'ooo'  # Dots
-
+```
 Modifying font settings
-python
+```python
 
 # Change font family
 FONT_FAMILY = 'Helvetica'     # or 'Arial', 'Times New Roman', 'DejaVu Sans'
@@ -355,9 +358,9 @@ FONT_SIZE_AXES = 9
 FONT_SIZE_LABEL = 9
 FONT_SIZE_LEGEND = 8
 FONT_SIZE_ANNOTATION = 8
-
+```
 Changing output filename
-python
+```python
 
 # At the top of the script
 OUTPUT_BASE = "my_custom_analysis_name"
@@ -370,18 +373,18 @@ Common errors and solutions
 Error: "Missing required argument: --genomes"
 
 Cause: One or both required input files not specified.
-
+```
 Solution: Always provide both input files:
-bash
+```bash
 
 python mei_cumulative_analysis.py -g genomes.txt -m mei_data.txt
 
 Error: "File not found"
 
 Cause: Specified file path does not exist.
-
+```
 Solution: Verify file paths:
-bash
+```bash
 
 # Check if files exist
 ls -la genomes.txt
@@ -393,9 +396,9 @@ python mei_cumulative_analysis.py -g /full/path/genomes.txt -m /full/path/mei_da
 Warning: "requested genomes not found in data"
 
 Cause: Genomes in your list don't appear in the MEI data.
-
+```
 Solution: Check available genomes:
-bash
+```bash
 
 # Extract unique genome IDs from MEI data
 cut -f13 mei_data.txt | tr ',' '\n' | cut -d'_' -f1 | sort -u
@@ -406,9 +409,9 @@ comm -23 <(sort genomes.txt) <(cut -f13 mei_data.txt | tr ',' '\n' | cut -d'_' -
 Empty plot or missing Phase 1
 
 Cause: No priority haplotypes found with HAP1/HAP2 suffixes.
-
+```
 Solution: Verify haplotype format:
-bash
+```bash
 
 # Check samples column format
 cut -f13 mei_data.txt | head -5
@@ -418,9 +421,9 @@ cut -f13 mei_data.txt | head -5
 Matplotlib font warnings
 
 Cause: Arial or Helvetica fonts not available on your system.
-
+```
 Solution: Use default matplotlib fonts:
-python
+```python
 
 # In mei_cumulative_analysis.py
 FONT_FAMILY = 'DejaVu Sans'  # Default matplotlib font
@@ -428,9 +431,9 @@ FONT_FAMILY = 'DejaVu Sans'  # Default matplotlib font
 Memory error with large datasets
 
 Cause: Dataset too large for available RAM.
-
+```
 Solution: Process in chunks or increase memory:
-python
+```python
 
 # Add chunking to load_mei_data function
 def load_mei_data(filepath, chunksize=10000):
@@ -448,9 +451,9 @@ Dataset size	Expected memory	Expected time	Recommendation
 50,000-100,000 MEIs	2-4 GB	5-15 min	Use high-memory instance
 >100,000 MEIs	>4 GB	>15 min	Consider downsampling
 Validation checks
-
+```
 Run these checks before analysis:
-bash
+```bash
 
 # 1. Check genomes file format
 file genomes.txt
@@ -465,7 +468,7 @@ cut -f13 mei_data.txt | grep -c "^$"
 
 # 4. Validate haplotype format
 cut -f13 mei_data.txt | grep -E "HG[0-9]{5}_(HAP[12]|[12])" | wc -l
-
+```
 Contributing
 
 Contributions are welcome! Please follow these steps:
@@ -489,9 +492,10 @@ Pull request process
 
     Create a feature branch:
 
-bash
+```bash
 
 git checkout -b feature/amazing-feature
+```
 
     Make your changes following PEP 8 style guide
 
@@ -501,13 +505,13 @@ git checkout -b feature/amazing-feature
 
     Commit with clear message:
 
-bash
+```bash
 
 git commit -m 'Add amazing feature: brief description'
-
+```
     Push to your fork:
 
-bash
+```bash
 
 git push origin feature/amazing-feature
 
@@ -520,9 +524,9 @@ git push origin feature/amazing-feature
         Screenshots for UI changes
 
         Test results
-
+```
 Development setup
-bash
+```bash
 
 # Clone your fork
 git clone https://github.com/your-username/mei-cumulative-analysis.git
@@ -546,30 +550,31 @@ Code style
     Keep functions focused and small
 
     Add type hints where appropriate
-
+```
 Testing
-bash
+```bash
 
 # Run tests
 python -m pytest tests/
 
 # Run with coverage
 python -m pytest --cov=. tests/
-
+```
 Citation
 
 If you use this tool in your research, please cite:
-bibtex
+```bibtex
 
-@software{fistonlavier_mei_cumulative_2025,
+@software{fistonlavier_mei_cumulative_2026,
   author = {Fiston-Lavier, Anna-Sophie},
   title = {MEI Cumulative Discovery Analysis},
   year = {2025},
-  version = {2.1.0},
+  version = {1},
   doi = {10.5281/zenodo.XXXXXX},
-  url = {https://github.com/annasophie/mei-cumulative-analysis}
+  url = {https://github.com/annasophie/hprcv2_mei}
 }
 
+```
 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
@@ -577,122 +582,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 Authors : Anna-Sophie Fiston-Lavier, Capucine Mayoud, Shadi Yacoub
 
 Acknowledgments : Human Pangenome Reference Consortium (HPRC) for MEI data standards and resources
-
-
-
-Frequently asked questions
-
-Q: Can I use this with non-human genomes?
-
-A: Yes! Modify the genome ID pattern in parse_haplotype() function to match your naming convention.
-
-Q: How do I add more frequency categories?
-
-A: Modify the categorize_frequency() function to add more thresholds.
-
-Q: Can I run this in batch mode?
-
-A: Yes, using a shell script:
-bash
-
-for genomes in genomes_*.txt; do
-    python mei_cumulative_analysis.py -g $genomes -m mei_data.txt
-done
-
-Q: Does it support gzipped input files?
-
-A: Currently no, but you can pre-process:
-bash
-
-gunzip -c mei_data.txt.gz > mei_data.txt
-python mei_cumulative_analysis.py -g genomes.txt -m mei_data.txt
-
-Q: How can I customize the HTML report?
-
-A: Modify the generate_html_report() function - it's pure Python string formatting.
-
-Q: Can I integrate this into Snakemake/Nextflow?
-
-A: Yes! Example workflows are provided in the workflows/ directory.
-Support
-Getting help
-
-    Documentation: Read this README carefully
-
-    Issues: Search existing issues on GitHub
-
-    Examples: Check the examples/ directory
-
-    Email: contact@annasophie.fr (for urgent matters)
-
-Reporting bugs
-
-When reporting bugs, please include:
-markdown
-
-**Description:**
-Clear description of the issue
-
-**Steps to reproduce:**
-1. Run command: `python mei_cumulative_analysis.py -g test.txt -m data.txt`
-2. See error: [error message]
-
-**Expected behavior:**
-What should happen
-
-**Environment:**
-- OS: [e.g., Ubuntu 20.04]
-- Python version: [e.g., 3.9.5]
-- Package versions: [output of pip list]
-
-**Additional context:**
-Sample of input files (if possible)
-
-Feature requests
-
-Feature requests are welcome! Please include:
-
-    Clear description of the feature
-
-    Use case and motivation
-
-    Proposed implementation (if any)
-
-    Alternatives considered
-
-Code of conduct
-
-This project adheres to a standard code of conduct. Please:
-
-    Be respectful and inclusive
-
-    Provide constructive feedback
-
-    Accept different viewpoints
-
-    Focus on what's best for the community
-
-Changelog format
-
-Entries use the following format:
-text
-
-## [version] - YYYY-MM-DD
-
-### Added
-- New features
-
-### Changed
-- Changes to existing functionality
-
-### Deprecated
-- Soon-to-be removed features
-
-### Removed
-- Removed features
-
-### Fixed
-- Bug fixes
-
-### Security
-- Security fixes
