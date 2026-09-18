@@ -61,7 +61,7 @@ conda install numpy pandas matplotlib
 
 python mei_cumulative_analysis.py --help
 ```
-Usage
+## Usage
 Basic usage
 ```bash
 
@@ -77,7 +77,7 @@ Display help
 
 python mei_cumulative_analysis.py --help
 ```
-Input files
+## input-files
 1. Genomes list file (-g, --genomes)
 
 Text file containing one genome identifier per line:
@@ -124,8 +124,8 @@ Example line:
 ```text
 
 chr1	1000	1200	LINE1	L1HS	LINE	+	200	PASS	0.15	3	20	HG01123_HAP1,HG01258_HAP2,HG01372_HAP1
-
-Output files
+```
+## output-files
 
 All outputs are saved in the current working directory with the base name MEI_cumulative_phases_comparison:
 File	Format	Description	Use case
@@ -135,7 +135,7 @@ MEI_cumulative_phases_comparison.svg	SVG	Editable vector	Web, figure editing
 MEI_cumulative_phases_comparison.html	HTML	Interactive report	Data exploration, sharing
 Example workflow
 Step 1: Prepare input files
-bash
+```bash
 
 # Create genomes list
 cat > genomes.txt << EOF
@@ -151,14 +151,14 @@ head -n 5 your_mei_data.txt
 
 # Check column count (should be 13 columns)
 awk -F'\t' '{print NF; exit}' your_mei_data.txt
-
+```
 Step 2: Run analysis
-bash
+```bash
 
 python mei_cumulative_analysis.py -g genomes.txt -m your_mei_data.txt
-
+```
 Step 3: Monitor progress
-text
+```text
 
 ======================================================================
 MEI CUMULATIVE DISCOVERY ANALYSIS
@@ -189,9 +189,9 @@ MEI CUMULATIVE DISCOVERY ANALYSIS
     MEI_cumulative_phases_comparison.svg
   HTML report:
     MEI_cumulative_phases_comparison.html
-
+```
 Step 4: View results
-bash
+```bash
 
 # On macOS
 open MEI_cumulative_phases_comparison.html
@@ -201,10 +201,10 @@ xdg-open MEI_cumulative_phases_comparison.html
 
 # On Windows
 start MEI_cumulative_phases_comparison.html
-
-Output interpretation
+```
+## output-interpretation
 Cumulative curves figure
-
+```text
 The generated figure displays:
 
 X-axis: "Nth additional haplotype" - The order in which haplotypes are added
@@ -235,9 +235,8 @@ Labels on the right:
     Numerical values showing total counts per category
 
     Separate annotations for Phase 1 and Phase 2 when applicable
-
-Statistics output
 ```
+## statistics-output
 
 The console provides:
 ```text
