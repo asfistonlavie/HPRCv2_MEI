@@ -25,8 +25,7 @@ The analysis categorizes MEIs by population frequency into three classes:
 - [Input files](#input-files)
 - [Output files](#output-files)
 - [Output interpretation](#output-interpretation)
-- [License](#license)
-- [Author](#author)
+- [License & Authors](#license)
 
 
 ## Requirements
@@ -469,7 +468,7 @@ cut -f13 mei_data.txt | grep -c "^$"
 cut -f13 mei_data.txt | grep -E "HG[0-9]{5}_(HAP[12]|[12])" | wc -l
 ```
 
-Citation
+## Citation
 
 If you use this tool in your research, please cite:
 ```bibtex
@@ -484,10 +483,8 @@ If you use this tool in your research, please cite:
 }
 
 ```
-License
+## License & authors
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
 Authors : Anna-Sophie Fiston-Lavier, Capucine Mayoud, Shadi Yacoub
-
 Acknowledgments : Human Pangenome Reference Consortium (HPRC) for MEI data standards and resources
