@@ -469,106 +469,16 @@ cut -f13 mei_data.txt | grep -c "^$"
 # 4. Validate haplotype format
 cut -f13 mei_data.txt | grep -E "HG[0-9]{5}_(HAP[12]|[12])" | wc -l
 ```
-Contributing
 
-Contributions are welcome! Please follow these steps:
-Reporting issues
-
-    Check existing issues before creating a new one
-
-    Include:
-
-        Python version (python --version)
-
-        Package versions (pip list | grep -E "numpy|pandas|matplotlib")
-
-        Complete error message
-
-        Sample input data (if possible)
-
-Pull request process
-
-    Fork the repository
-
-    Create a feature branch:
-
-```bash
-
-git checkout -b feature/amazing-feature
-```
-
-    Make your changes following PEP 8 style guide
-
-    Add tests for new functionality
-
-    Update documentation
-
-    Commit with clear message:
-
-```bash
-
-git commit -m 'Add amazing feature: brief description'
-```
-    Push to your fork:
-
-```bash
-
-git push origin feature/amazing-feature
-
-    Open a Pull Request with:
-
-        Description of changes
-
-        Motivation and context
-
-        Screenshots for UI changes
-
-        Test results
-```
-Development setup
-```bash
-
-# Clone your fork
-git clone https://github.com/your-username/mei-cumulative-analysis.git
-cd mei-cumulative-analysis
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install development dependencies
-pip install -r requirements-dev.txt
-
-Code style
-
-    Follow PEP 8 guidelines
-
-    Use descriptive variable names
-
-    Add docstrings to all functions
-
-    Keep functions focused and small
-
-    Add type hints where appropriate
-```
-Testing
-```bash
-
-# Run tests
-python -m pytest tests/
-
-# Run with coverage
-python -m pytest --cov=. tests/
-```
 Citation
 
 If you use this tool in your research, please cite:
 ```bibtex
 
-@software{fistonlavier_mei_cumulative_2026,
-  author = {Fiston-Lavier, Anna-Sophie},
+@software{hprcv2_mei,
+  author = {Fiston-Lavier, Anna-Sophie; Mayoud, Caoucine; Yacoub, Shadi},
   title = {MEI Cumulative Discovery Analysis},
-  year = {2025},
+  year = {2026},
   version = {1},
   doi = {10.5281/zenodo.XXXXXX},
   url = {https://github.com/annasophie/hprcv2_mei}
