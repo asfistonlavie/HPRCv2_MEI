@@ -25,7 +25,7 @@ The analysis categorizes MEIs by population frequency into three classes:
 - [Input files](#input-files)
 - [Output files](#output-files)
 - [Output interpretation](#output-interpretation)
-- [License & Authors](#license)
+- [License & Authors](#license-authors)
 
 
 ## Requirements
@@ -466,24 +466,9 @@ cut -f13 mei_data.txt | grep -c "^$"
 
 # 4. Validate haplotype format
 cut -f13 mei_data.txt | grep -E "HG[0-9]{5}_(HAP[12]|[12])" | wc -l
-```
-
-## Citation
-
-If you use this tool in your research, please cite:
-```bibtex
-
-@software{hprcv2_mei,
-  author = {Fiston-Lavier, Anna-Sophie; Mayoud, Caoucine; Yacoub, Shadi},
-  title = {MEI Cumulative Discovery Analysis},
-  year = {2026},
-  version = {1},
-  doi = {10.5281/zenodo.XXXXXX},
-  url = {https://github.com/annasophie/hprcv2_mei}
-}
 
 ```
-## License & authors
+## license-authors
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 Authors : Anna-Sophie Fiston-Lavier, Capucine Mayoud, Shadi Yacoub
