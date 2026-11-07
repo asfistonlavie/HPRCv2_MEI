@@ -3,7 +3,6 @@
 # MEI Cumulative Discovery Analysis
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://python.org)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)]()
 
 A Python pipeline for analyzing cumulative Mobile Element Insertion (MEI) discovery rates across phased haplotype data, generating publication-ready figures. This tool analyzes MEI genotyping data to generate cumulative discovery curves comparing two experimental phases:
@@ -470,6 +469,6 @@ cut -f13 mei_data.txt | grep -E "HG[0-9]{5}_(HAP[12]|[12])" | wc -l
 ```
 ## license-authors
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the GNU GENERAL PUBLIC LICENSE v3 - see the LICENSE file for details.
 Authors : Anna-Sophie Fiston-Lavier, Capucine Mayoud, Shadi Yacoub
 Acknowledgments : Human Pangenome Reference Consortium (HPRC) for MEI data standards and resources
